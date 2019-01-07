@@ -14,13 +14,8 @@
 
 ;;; Code:
 
-(reuire 'package)
-
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
-
 (load-file (concat (file-name-directory load-file-name)
-                   "core/paths.el"))
-(require 'core (concat user-emacs-directory "core/core"))
+                   "core/mad-paths.el"))
+(require 'mad-core (concat user-emacs-directory "core/mad-core"))
 
 ;;; init.el ends here

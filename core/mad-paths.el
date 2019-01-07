@@ -15,8 +15,13 @@
   (expand-file-name (concat user-emacs-directory "core/"))
   "Madmacs core directory.")
 
-(add-to-load-path mad-core-directory)
+(defvar mad-package-dir
+  (expand-file-name (concat user-emacs-directory "packages/"))
+  "Madmacs will put installed packages here.")
 
-(provide 'paths)
+(add-to-load-path mad-core-directory)
+(setq package-user-dir mad-package-dir)
+
+(provide 'mad-paths)
 
 ;;; mad-paths.el ends here

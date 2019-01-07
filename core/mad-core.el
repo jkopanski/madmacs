@@ -14,8 +14,10 @@
 (setq locale-coding-system   'utf-8)
 (setq-default buffer-file-coding-system 'utf-8)
 
-(require 'ui)
+(require 'mad-paths)
+(require 'mad-package)
+(require 'mad-ui)
 
-(provide 'core)
+(provide 'mad-core)
 
 ;;; core.el ends here
