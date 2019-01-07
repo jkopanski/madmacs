@@ -1,0 +1,26 @@
+;;; init.el --- Emacs config of Jakub Kopański -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;; This mostly rips off from:
+;; doom-emacs https://github.com/hlissner/doom-emacs
+;;   which is Copyright (c) Henrik Lissner.
+;; spacemacs http://spacemacs.org/
+;;   which is Copyright (c) 2012-2017 Sylvain Benner & Contributors
+;; Mark Karpov emacs config https://github.com/mrkkrp/dot-emacs
+;;   which is Copyright (c) Mark Karpov
+;; ohai-emacs https://github.com/bodil/ohai-emacs
+;;   which is Copyright (c) Copyright (c) Bodil Stokke
+
+;;; Code:
+
+(reuire 'package)
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
+(load-file (concat (file-name-directory load-file-name)
+                   "core/paths.el"))
+(require 'core (concat user-emacs-directory "core/core"))
+
+;;; init.el ends here
