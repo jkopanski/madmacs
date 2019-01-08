@@ -12,7 +12,7 @@
 (require 'package)
 ;; by default gets packages only from elpa
 (dolist (repository '(("melpa" . "https://melpa.org/packages/")
-                      ("org"   . "https://orgmode.org/elpa")))
+                      ("org"   . "https://orgmode.org/elpa/")))
   (add-to-list 'package-archives repository))
 
 ;; start package manager
