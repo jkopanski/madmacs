@@ -27,6 +27,9 @@
 (paradox-require 'use-package)
 (require 'use-package)
 
+;; This makes use package install every declared package.
+(setq use-package-always-ensure t)
+
 (provide 'mad-package)
 
 ;;; mad-package.el ends here

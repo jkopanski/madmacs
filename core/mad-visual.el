@@ -14,11 +14,23 @@
 
 (require 'mad-package)
 
-(use-package material-theme
-  :ensure t
+(use-package "material-theme"
   :config
-  (load-theme 'material))
+  (load-theme 'material t))
+
+(setq use-package-verbose t)
+(use-package "smart-mode-line"
+  :demand t
+  :commands sml/setup
+  :init
+  (setq sml/theme 'respectful
+        sml/shorten-directory t
+        sml/shorten-modes t
+        sml/name-width 40
+        sml/no-confirm-load-theme t
+        sml/mode-width 'full)
+  :config
+  (sml/setup))
 
 (provide 'mad-visual)
-
 ;;; mad-visual.el ends here
