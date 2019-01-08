@@ -32,5 +32,14 @@
   :config
   (sml/setup))
 
+;; Enable built-in `display-line-numbers'
+;; Requires Emacs 26.1+
+;; Possible arguments are:
+;; t - absolute line numbers
+;; relative - relative line numbers
+;; visual - relative visual line numbers
+;; Not sure what the difference is between relative andvisual
+(setq display-line-numbers t)
+
 (provide 'mad-visual)
 ;;; mad-visual.el ends here
