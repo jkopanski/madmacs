@@ -19,7 +19,7 @@
 (require 'mad-env)
 (require 'mad-ui)
 (require 'mad-visual)
+(require 'mad-project)
 
 (provide 'mad-core)
-
-;;; core.el ends here
+;;; mad-core.el ends here
