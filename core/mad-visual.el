@@ -52,5 +52,7 @@
 ;; shiny
 (use-package "all-the-icons")
 
+(use-package "smartparens")
+
 (provide 'mad-visual)
 ;;; mad-visual.el ends here
