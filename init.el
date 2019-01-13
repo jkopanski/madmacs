@@ -18,4 +18,7 @@
                    "core/mad-paths.el"))
 (require 'mad-core (concat user-emacs-directory "core/mad-core"))
 
+;; enable default modules
+(require 'mad-completion)
+
 ;;; init.el ends here
