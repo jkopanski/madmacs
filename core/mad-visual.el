@@ -41,5 +41,16 @@
 ;; Not sure what the difference is between relative andvisual
 (setq display-line-numbers t)
 
+;; show matching parentheses
+;; with little delay that I'm used to
+;; by using `doom-emacs'
+(setq show-paren-delay 0.1
+      show-paren-highlight-openparen t
+      show-paren-when-point-inside-paren t)
+(show-paren-mode)
+
+;; shiny
+(use-package "all-the-icons")
+
 (provide 'mad-visual)
 ;;; mad-visual.el ends here

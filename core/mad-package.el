@@ -31,5 +31,4 @@
 (setq use-package-always-ensure t)
 
 (provide 'mad-package)
-
 ;;; mad-package.el ends here
