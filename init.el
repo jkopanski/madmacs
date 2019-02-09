@@ -20,6 +20,7 @@
 
 ;; enable default modules
 (require 'mad-completion)
-(require 'mad-lsp)
+(require 'mad-direnv)
 (require 'mad-editing)
+(require 'mad-lsp)
 ;;; init.el ends here
