@@ -8,9 +8,7 @@
 
 (require 'mad-core)
 
-(use-package "direnv"
-  :config
-  (direnv-mode))
+(use-package "direnv")
 
 (provide 'mad-direnv)
 ;;; mad-direnv.el ends here

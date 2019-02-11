@@ -16,7 +16,6 @@
 
 (require 'mad-paths)
 (require 'mad-package)
-(require 'mad-env)
 (require 'mad-ui)
 (require 'mad-visual)
 (require 'mad-project)
