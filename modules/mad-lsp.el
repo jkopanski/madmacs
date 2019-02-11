@@ -9,9 +9,20 @@
 
 (require 'mad-package)
 (require 'mad-completion)
+(require 'mad-direnv)
 (require 'mad-flycheck)
 
-(use-package "lsp-mode")
+(defun mad-lsp ()
+  "Try setting up environment before starting LSP server."
+  (direnv-update-environment)
+  (lsp))
+
+(use-package "lsp-mode"
+  :commands lsp
+  :init
+  (setq lsp-auto-guess-root    t   ;; Automatically guess the project root using projectile/project.)
+        lsp-prefer-flymake     nil ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)
+        lsp-enable-indentation t)) ;; Indent regions using the file formatting functionality provided by the language server
 
 (with-eval-after-load "company"
   (use-package "company-lsp"
