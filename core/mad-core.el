@@ -20,6 +20,7 @@
 (require 'mad-visual)
 (require 'mad-project)
 (require 'mad-utils)
+(require 'mad-keys)
 
 (provide 'mad-core)
 ;;; mad-core.el ends here
