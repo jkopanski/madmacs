@@ -93,7 +93,7 @@
   ;; (modalka-define-kbd "" "") ;; no key yet on my layout
   ;; (modalka-define-kbd "a" "") ;; NOT YET
   ;; (modalka-define-kbd "o" "") ;; NOT YET
-  (modalka-define-kbd "e" "C-x u") ;; 'undo
+  (modalka-define-kbd "e" "C-/") ;; 'undo
   ;; (modalka-define-kbd "u" "") ;; NOT YET
   (modalka-define-kbd "i" "") ;; NOT YET
   ;; home row - 1
