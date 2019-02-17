@@ -40,6 +40,7 @@
 ;; visual - relative visual line numbers
 ;; Not sure what the difference is between relative andvisual
 (setq display-line-numbers t)
+(global-display-line-numbers-mode)
 
 ;; show matching parentheses
 ;; with little delay that I'm used to
