@@ -15,7 +15,9 @@
 
 (use-package "typescript-mode"
   :mode "\\.ts$"
-  :hook (typescript-mode . mad-lsp))
+  :hook (typescript-mode . mad-lsp)
+  :config
+  (setq typescript-indent-level 2))
 
 (provide 'mad-javascript)
 ;;; mad-javascript.el ends here
