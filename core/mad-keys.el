@@ -11,6 +11,16 @@
 (require 'mad-package)
 (require 'mad-utils)
 
+(require 'dired-x)
+(setq dired-auto-revert-buffer   t
+      dired-clean-up-buffers-too t
+      dired-dwim-target          t
+      dired-keep-marker-copy     nil
+      dired-keep-marker-rename   nil
+      dired-listing-switches     "-Galh --group-directories-first"
+      dired-recursive-copies     'always
+      dired-recursive-deletes    'always)
+
 (use-package "which-key"
   :init
   (setq which-key-separator " "
