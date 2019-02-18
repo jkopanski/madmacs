@@ -9,6 +9,7 @@
 (require 'mad-package)
 
 (use-package "flycheck"
+  :delight
   :commands (flycheck-mode flycheck-list-errors flycheck-buffer)
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enabled)))

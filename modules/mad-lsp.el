@@ -19,6 +19,7 @@
 
 (use-package "lsp-mode"
   :commands lsp
+  :delight
   :init
   (setq lsp-auto-guess-root    t   ;; Automatically guess the project root using projectile/project.)
         lsp-prefer-flymake     nil ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)

@@ -14,6 +14,8 @@
 
 (require 'mad-package)
 
+(use-package "delight")
+
 (use-package "material-theme"
   :config
   (load-theme 'material t))

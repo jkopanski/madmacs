@@ -8,7 +8,8 @@
 
 (require 'mad-core)
 
-(use-package "direnv")
+(use-package "direnv"
+  :delight)
 
 (provide 'mad-direnv)
 ;;; mad-direnv.el ends here

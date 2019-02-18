@@ -9,6 +9,7 @@
 
 (use-package "company"
   :demand t
+  :delight
   :commands company-mode
   :config
   (setq company-idle-delay nil

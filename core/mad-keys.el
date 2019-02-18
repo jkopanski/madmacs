@@ -22,6 +22,7 @@
       dired-recursive-deletes    'always)
 
 (use-package "which-key"
+  :delight
   :init
   (setq which-key-separator " "
         which-key-prefix-prefix "+")
@@ -45,6 +46,7 @@
 
 (setq-default cursor-type '(bar . 1))
 (use-package "modalka"
+  :delight
   :bind ( ("<end>" . #'modalka-mode)
           :map modalka-mode-map
           ("a" . #'mad-insert-after)

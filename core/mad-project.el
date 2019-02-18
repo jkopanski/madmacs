@@ -12,7 +12,9 @@
   :demand t
   :commands projectile-global-mode
   :config
-  (projectile-global-mode))
+  (projectile-global-mode)
+  (setq projectile-mode-line-prefix " ")
+  )
 
 (provide 'mad-project)
 ;;; mad-project.el ends here
