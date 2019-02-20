@@ -1,16 +1,19 @@
 ;;; modules/mad-haskell.el --- Haskell mode -*- lexical-binding: t; -*-
-;;; Commentary
+;;; Commentary:
 
-;; Hakell with dante and/or lsp
+;; Pretty empty haskell mode for now.
+;; TODO:
+;; * enable lsp when available
+;; * dante for repl interaction
 
-;;; Code:
 (require 'mad-core)
-(require 'mad-lsp)
-
-(use-package "lsp-haskell")
 
 (use-package "haskell-mode"
-  :hook (haskell-mode . mad-lsp))
+  :mode "\\.hs$"
+  :mode ("\\.ghci" . ghci-script-mode)
+  :mode ("\\.cabal" . haskell-cabal-mode)
+  :interpreter (("runghc" . haskell-mode)
+		("runhaskell" . haskell-mode)))
 
 (provide 'mad-haskell)
 ;;; mad-haskell.el ends here
