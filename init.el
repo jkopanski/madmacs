@@ -20,21 +20,7 @@
 
 ;; enable default modules
 (require 'mad-completion)
-
+(require 'mad-org)
 (require 'mad-haskell)
 (require 'mad-javascript)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (haskell-mode xah-fly-keys which-key web-mode use-package typescript-mode smartparens smart-mode-line rjsx-mode projectile paradox modalka material-theme lsp-ui flycheck direnv diminish delight company-quickhelp company-lsp all-the-icons))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
