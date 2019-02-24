@@ -11,7 +11,9 @@
 
 (use-package "rjsx-mode"
   :mode "\\.jsx?$"
-  :hook (rjsx-mode . mad-lsp))
+  :hook (rjsx-mode . mad-lsp)
+  :config
+  (setq js-indent-level 2))
 
 (use-package "typescript-mode"
   :mode "\\.ts$"
