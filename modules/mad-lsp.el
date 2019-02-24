@@ -8,7 +8,6 @@
 ;;; Code:
 
 (require 'mad-package)
-(require 'mad-completion)
 (require 'mad-direnv)
 (require 'mad-flycheck)
 
@@ -25,15 +24,14 @@
         lsp-prefer-flymake     nil ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)
         lsp-enable-indentation t)) ;; Indent regions using the file formatting functionality provided by the language server
 
-(with-eval-after-load "company"
-  (use-package "company-lsp"
-    :after lsp-mode
-    :config
-    (push 'company-lsp company-backends)))
+(use-package "company-lsp"
+  :commands company-lsp)
 
 (use-package "lsp-ui"
   :after lsp-mode
-  :hook (lsp-mode . lsp-ui-mode))
+  :hook (lsp-mode . lsp-ui-mode)
+  :bind (([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions)
+	 ([remap xref-find-references] . #'lsp-ui-peek-find-references)))
 
 (provide 'mad-lsp)
 ;;; mad-lsp.el ends here
