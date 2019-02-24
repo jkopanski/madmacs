@@ -7,13 +7,17 @@
 ;; * dante for repl interaction
 
 (require 'mad-core)
+(require 'mad-lsp)
+
+(use-package "lsp-haskell")
 
 (use-package "haskell-mode"
   :mode "\\.hs$"
   :mode ("\\.ghci" . ghci-script-mode)
   :mode ("\\.cabal" . haskell-cabal-mode)
   :interpreter (("runghc" . haskell-mode)
-		("runhaskell" . haskell-mode)))
+		("runhaskell" . haskell-mode))
+  :hook (haskell-mode . mad-lsp))
 
 (provide 'mad-haskell)
 ;;; mad-haskell.el ends here
