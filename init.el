@@ -22,6 +22,7 @@
 (require 'mad-org)
 (require 'mad-haskell)
 (require 'mad-javascript)
+(require 'mad-nix)
 (require 'mad-rtl)
 
 ;;; init.el ends here
