@@ -6,6 +6,8 @@
 ;; * enable lsp when available
 ;; * dante for repl interaction
 
+;;; Code:
+
 (require 'mad-core)
 (require 'mad-lsp)
 

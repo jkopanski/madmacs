@@ -10,7 +10,7 @@
 ;; Mark Karpov emacs config https://github.com/mrkkrp/dot-emacs
 ;;   which is Copyright (c) Mark Karpov
 ;; ohai-emacs https://github.com/bodil/ohai-emacs
-;;   which is Copyright (c) Copyright (c) Bodil Stokke
+;;   which is Copyright (c) Bodil Stokke
 
 ;;; Code:
 
