@@ -16,9 +16,9 @@
 
 (use-package "delight")
 
-(use-package "material-theme"
+(use-package "nord-theme"
   :config
-  (load-theme 'material t))
+  (load-theme 'nord t))
 
 (setq use-package-verbose t)
 (use-package "smart-mode-line"
