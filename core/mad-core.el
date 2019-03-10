@@ -24,5 +24,8 @@
 (require 'mad-utils)
 (require 'mad-keys)
 
+(setq backup-directory-alist
+      (list (cons "." mad-backup-dir)))
+
 (provide 'mad-core)
 ;;; mad-core.el ends here

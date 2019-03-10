@@ -23,6 +23,10 @@
   (expand-file-name (concat user-emacs-directory "packages/"))
   "Madmacs will put installed packages here.")
 
+(defvar mad-backup-dir
+  (expand-file-name (concat user-emacs-directory "backup/"))
+  "Madmacs will put file backups here instead of next to file being edited.")
+
 (mapc 'add-to-load-path (list mad-core-directory
                               mad-modules-directory))
 (setq package-user-dir mad-package-dir)

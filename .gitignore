@@ -12,3 +12,6 @@
 
 # Installed packages
 packages/
+
+# Backup files
+backup/
