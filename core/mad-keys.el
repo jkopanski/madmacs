@@ -85,7 +85,7 @@
   (modalka-define-kbd ")" "") ;; NOT YET
   ;; left hand
   ;; home row + 1
-  (modalka-define-kbd "<tab>" "") ;; NOT YET
+  ;; (modalka-define-kbd "<tab>" "") ;; NOT YET
   (modalka-define-kbd "'" "") ;; NOT YET
   (modalka-define-kbd "," "") ;; NOT YET
   (modalka-define-kbd "." "C-<backspace>") ;; 'backward-kill-word
