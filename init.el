@@ -20,6 +20,7 @@
 
 ;; enable default modules
 (require 'mad-org)
+(require 'mad-git)
 (require 'mad-haskell)
 (require 'mad-javascript)
 (require 'mad-nix)
