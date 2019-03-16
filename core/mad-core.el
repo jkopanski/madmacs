@@ -14,8 +14,6 @@
 (setq locale-coding-system   'utf-8)
 (setq-default buffer-file-coding-system 'utf-8)
 
-(set-default 'indent-tabs-mode nil)
-
 (require 'mad-paths)
 (require 'mad-package)
 (require 'mad-ui)

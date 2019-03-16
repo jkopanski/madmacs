@@ -3,6 +3,8 @@
 
 ;;; Code:
 
+(set-default 'indent-tabs-mode nil)
+
 (use-package ethan-wspace
   :demand t
   :delight
