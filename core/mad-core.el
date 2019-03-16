@@ -20,6 +20,7 @@
 (require 'mad-package)
 (require 'mad-ui)
 (require 'mad-visual)
+(require 'mad-editing)
 (require 'mad-project)
 (require 'mad-utils)
 (require 'mad-keys)
