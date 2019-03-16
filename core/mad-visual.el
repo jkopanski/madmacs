@@ -16,6 +16,8 @@
 
 (use-package "delight")
 
+(set-face-attribute 'default nil :font "Input" :height 150)
+
 (use-package "nord-theme"
   :config
   (load-theme 'nord t))
