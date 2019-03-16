@@ -11,7 +11,9 @@
 ;; See http://magit.github.io/ for instructions.
 (use-package "magit"
   :commands magit-status
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 (use-package "forge")
 
