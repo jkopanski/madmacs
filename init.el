@@ -25,6 +25,7 @@
 (require 'mad-javascript)
 (require 'mad-nix)
 (require 'mad-ledger)
+(require 'mad-racket)
 (require 'mad-rtl)
 
 ;;; init.el ends here
