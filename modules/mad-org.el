@@ -15,7 +15,19 @@
   (setq org-replace-disputed-keys t)
   ;; Fancy bullets
   (use-package "org-bullets"
-    :hook org-mode))
+    :hook (org-mode . org-bullets-mode))
+  (use-package ob-typescript
+    :load-path "modules"
+    :config
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((typescript . t))))
+
+  ;; Code blocks
+  (setq org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-confirm-babel-evaluate nil
+        org-edit-src-content-indentation 0))
 
 (provide 'mad-org)
 ;;; mad-org.el ends here
