@@ -10,6 +10,9 @@
 
 ;; built-in package manager inside Emacs
 (require 'package)
+;; bug in Emacs: https://debbugs.gnu.org/34341.
+;; It should be fixed in Emacs 26.3+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 ;; by default gets packages only from elpa
 (dolist (repository '(("melpa" . "https://melpa.org/packages/")
                       ("org"   . "https://orgmode.org/elpa/")))
