@@ -42,48 +42,40 @@
 (add-to-list 'org-babel-tangle-lang-exts '("typescript" . "ts"))
 
 ;; optionally declare default header arguments for this language
-;; and additional files to include during compilation
-(defvar org-babel-default-header-args:typescript '((:cmdline . "--strict")
-                                                   (:files . "")))
+(defvar org-babel-default-header-args:typescript '((:cmdline . "--noImplicitAny")))
+
+(defun org-babel-variable-assignments:typescript (params)
+  "Return list of typescript statements assigning the block's variables."
+  (mapcar (lambda (pair) (format "let %s=%s;"
+                                 (car pair) (org-babel-typescript-var-to-typescript (cdr pair))))
+          (org-babel--get-vars params)))
 
 (defun org-babel-typescript-var-to-typescript (var)
   "Convert an elisp var into a string of typescript source code
 specifying a var of the same value."
-  (format "%S" var))
-
-;; This function expands the body of a source code block by doing
-;; things like prepending argument definitions to the body, it should
-;; be called by the `org-babel-execute:typescript' function below.
-(defun org-babel-expand-body:typescript (body params &optional processed-params)
-  "Expand BODY according to PARAMS, return the expanded body."
-  (let ((vars (nth 1 (or processed-params (org-babel-process-params params)))))
-    (concat
-     (mapconcat ;; define any variables
-      (lambda (pair)
-        (format "%s=%S"
-                (car pair) (org-babel-typescript-var-to-typescript (cdr pair))))
-      vars "\n") "\n" body "\n")))
+  (if (listp var)
+      (concat "[" (mapconcat #'org-babel-typescript-var-to-typescript var ", ") "]")
+    (replace-regexp-in-string "\n" "\\\\n" (format "%S" var))))
 
 (defun org-babel-execute:typescript (body params)
   "Execute a block of Typescript code with org-babel.  This function is
 called by `org-babel-execute-src-block'"
   (let* ((tmp-src-file (org-babel-temp-file "ts-src-" ".ts"))
+         (tmp-tangle-file (org-babel-temp-file "ts-tangle-" ".ts"))
          (tmp-out-file (org-babel-temp-file "ts-src-" ".js"))
          (cmdline (cdr (assoc :cmdline params)))
          (cmdline (if cmdline (concat " " cmdline) ""))
-         (files (cdr (assoc :files params)))
-         ;; (files (if files
-         ;;            (mapconcat 'identity files)
-         ;;            " "))
+         (tangle (org-babel-tangle nil tmp-tangle-file "typescript"))
          (jsexec (if (assoc :wrap params) ""
                    (concat " ; node " (org-babel-process-file-name tmp-out-file))
                    )))
-    (with-temp-file tmp-src-file (insert body))
+    (with-temp-file tmp-src-file (insert (org-babel-expand-body:generic
+                                          body params (org-babel-variable-assignments:typescript params))))
     (let ((results (org-babel-eval (format "tsc %s --outFile %s %s %s %s"
                                            cmdline
                                            (org-babel-process-file-name tmp-out-file)
+                                           (mapconcat 'identity tangle " ")
                                            (org-babel-process-file-name tmp-src-file)
-                                           files
                                            jsexec)
                                    ""))
           (jstrans (with-temp-buffer

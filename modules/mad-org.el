@@ -21,7 +21,10 @@
     :config
     (org-babel-do-load-languages
      'org-babel-load-languages
-     '((typescript . t))))
+     '((typescript . t)
+       (js . t))))
+    (add-to-list 'org-babel-tangle-lang-exts '("typescript" . "ts"))
+    (add-to-list 'org-babel-default-header-args:typescript '(:cmdline . "--types node"))
 
   ;; Code blocks
   (setq org-src-fontify-natively t
