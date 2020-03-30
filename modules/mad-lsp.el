@@ -20,9 +20,10 @@
   :commands lsp
   :delight
   :init
-  (setq lsp-auto-guess-root    t   ;; Automatically guess the project root using projectile/project.)
-        lsp-prefer-flymake     nil ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)
-        lsp-enable-indentation t)) ;; Indent regions using the file formatting functionality provided by the language server
+  (setq lsp-auto-guess-root    t     ;; Automatically guess the project root using projectile/project.)
+        lsp-prefer-flymake     nil   ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)
+        lsp-enable-indentation t     ;; Indent regions using the file formatting functionality provided by the language server
+        lsp-enable-snippet     nil)) ;; I don't have yasnippet installed
 
 (use-package "company-lsp"
   :commands company-lsp)
