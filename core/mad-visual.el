@@ -16,7 +16,7 @@
 
 (use-package "delight")
 
-(set-face-attribute 'default nil :font "Input" :height 150)
+(set-face-attribute 'default nil :font "mononoki" :height 170)
 
 (use-package "nord-theme"
   :config
