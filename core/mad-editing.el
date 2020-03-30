@@ -4,6 +4,7 @@
 ;;; Code:
 
 (set-default 'indent-tabs-mode nil)
+(set-default 'tab-width 2)
 
 (use-package ethan-wspace
   :demand t
