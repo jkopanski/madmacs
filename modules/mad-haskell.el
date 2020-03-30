@@ -11,7 +11,13 @@
 (require 'mad-core)
 (require 'mad-lsp)
 
-(use-package "lsp-haskell")
+(use-package "lsp-haskell"
+  :config
+  (setq lsp-haskell-process-path-hie "ghcide")
+  (setq lsp-haskell-process-args-hie '())
+  ;; Comment/uncomment this line to see interactions between lsp client/server.
+  ;;(setq lsp-log-io t)
+  )
 
 (use-package "haskell-mode"
   :mode "\\.hs$"
