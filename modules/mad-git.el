@@ -7,17 +7,21 @@
 
 (require 'mad-core)
 
-(use-package "magit"
+;; I've deliberately disabled straight here because forge,
+;; depends on binary from emacsql-sqlite.
+;; With straight enablet it won't find it in nix store.
+(use-package magit
+  :straight nil
   :commands magit-status
   :bind ("C-x g" . magit-status)
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
-(use-package "forge")
+(use-package forge :straight nil)
 
-(use-package "gist")
+(use-package gist)
 
-(use-package "git-gutter-fringe"
+(use-package git-gutter-fringe
   :delight
   :config
   (global-git-gutter-mode t))

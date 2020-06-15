@@ -5,13 +5,13 @@
 
 (require 'mad-core)
 
-(use-package "nix-mode"
+(use-package nix-mode
   :mode "\\.nix$")
 
-(use-package "nix-update"
+(use-package nix-update
   :after nix-mode)
 
-(use-package "company-nixos-options"
+(use-package company-nixos-options
   :config
   (add-to-list 'company-backends 'company-nixos-options))
 

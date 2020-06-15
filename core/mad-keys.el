@@ -21,7 +21,7 @@
       dired-recursive-copies     'always
       dired-recursive-deletes    'always)
 
-(use-package "which-key"
+(use-package which-key
   :delight
   :init
   (setq which-key-separator " "
@@ -45,7 +45,7 @@
 (defalias 'mad-insert-newline (ε #'mad--insert-mode-after-f #'mad--newline))
 
 (setq-default cursor-type '(bar . 1))
-(use-package "modalka"
+(use-package modalka
   :delight
   :bind ( ("<end>" . #'modalka-mode)
           :map modalka-mode-map

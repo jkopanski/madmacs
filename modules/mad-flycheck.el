@@ -8,7 +8,7 @@
 
 (require 'mad-package)
 
-(use-package "flycheck"
+(use-package flycheck
   :delight
   :commands (flycheck-mode flycheck-list-errors flycheck-buffer)
   :config

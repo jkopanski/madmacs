@@ -11,7 +11,7 @@
 (require 'mad-core)
 (require 'mad-lsp)
 
-(use-package "lsp-haskell"
+(use-package lsp-haskell
   :config
   (setq lsp-haskell-process-path-hie "ghcide")
   (setq lsp-haskell-process-args-hie '())
@@ -19,12 +19,12 @@
   ;;(setq lsp-log-io t)
   )
 
-(use-package "haskell-mode"
+(use-package haskell-mode
   :mode "\\.hs$"
   :mode ("\\.ghci" . ghci-script-mode)
   :mode ("\\.cabal" . haskell-cabal-mode)
   :interpreter (("runghc" . haskell-mode)
-		("runhaskell" . haskell-mode))
+                ("runhaskell" . haskell-mode))
   :hook (haskell-mode . mad-lsp))
 
 (provide 'mad-haskell)

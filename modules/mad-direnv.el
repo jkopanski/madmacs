@@ -8,7 +8,7 @@
 
 (require 'mad-core)
 
-(use-package "direnv"
+(use-package direnv
   :delight)
 
 (provide 'mad-direnv)

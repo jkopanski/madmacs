@@ -14,16 +14,16 @@
 
 (require 'mad-package)
 
-(use-package "delight")
+(use-package delight)
 
-(set-face-attribute 'default nil :font "mononoki" :height 170)
+(set-face-attribute 'default nil :font "mononoki" :height 130)
 
-(use-package "nord-theme"
+(use-package nord-theme
   :config
   (load-theme 'nord t))
 
 (setq use-package-verbose t)
-(use-package "smart-mode-line"
+(use-package smart-mode-line
   :demand t
   :commands sml/setup
   :init
@@ -55,9 +55,9 @@
 (show-paren-mode)
 
 ;; shiny
-(use-package "all-the-icons")
+(use-package all-the-icons)
 
-(use-package "smartparens")
+(use-package smartparens)
 
 (provide 'mad-visual)
 ;;; mad-visual.el ends here

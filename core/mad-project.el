@@ -8,7 +8,7 @@
 
 (require 'mad-package)
 
-(use-package "projectile"
+(use-package projectile
   :demand t
   :commands projectile-global-mode
   :config

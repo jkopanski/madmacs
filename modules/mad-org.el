@@ -4,27 +4,27 @@
 ;; Basic org for now.
 ;; TODO:
 ;; * add babel code snippets execution
-;; * add org-brain
+;; * add org-roam
 
 (require 'mad-core)
 
-(use-package "org"
+(use-package org
   :ensure org-plus-contrib
   :config
   ;; Stop org-mode from highjacking shift-cursor keys.
   (setq org-replace-disputed-keys t)
   ;; Fancy bullets
-  (use-package "org-bullets"
+  (use-package org-bullets
     :hook (org-mode . org-bullets-mode))
-  (use-package ob-typescript
-    :load-path "modules"
-    :config
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((typescript . t)
-       (js . t))))
-    (add-to-list 'org-babel-tangle-lang-exts '("typescript" . "ts"))
-    (add-to-list 'org-babel-default-header-args:typescript '(:cmdline . "--types node"))
+  ;; (use-package ob-typescript
+  ;;   ;; :load-path "modules"
+  ;;   :config
+  ;;   (org-babel-do-load-languages
+  ;;    'org-babel-load-languages
+  ;;    '((typescript . t)
+  ;;      (js . t))))
+  ;;   (add-to-list 'org-babel-tangle-lang-exts '("typescript" . "ts"))
+  ;;   (add-to-list 'org-babel-default-header-args:typescript '(:cmdline . "--types node"))
 
   ;; Code blocks
   (setq org-src-fontify-natively t

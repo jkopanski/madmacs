@@ -16,23 +16,33 @@
   (direnv-update-environment)
   (lsp))
 
-(use-package "lsp-mode"
+(use-package lsp-mode
   :commands lsp
   :delight
   :init
-  (setq lsp-auto-guess-root    t     ;; Automatically guess the project root using projectile/project.)
-        lsp-prefer-flymake     nil   ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)
-        lsp-enable-indentation t     ;; Indent regions using the file formatting functionality provided by the language server
-        lsp-enable-snippet     nil)) ;; I don't have yasnippet installed
+  (setq
+   ;; Automatically guess the project root using projectile/project.)
+   lsp-auto-guess-root t
+   ;; Indent regions using the file formatting functionality provided by the language server
+   lsp-enable-indentation t
+   ;; Watch even large number of files
+   lsp-enable-file-watchers t
+   ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)
+   lsp-prefer-flymake nil
+   ;; I don't have yasnippet installed
+   lsp-enable-snippet nil)
+  :config
+  (add-to-list 'lsp-file-watch-ignored "[/\\\]dist-newstyle$")
+  (add-to-list 'lsp-file-watch-ignored "[/\\\]result.*"))
 
-(use-package "company-lsp"
+(use-package company-lsp
   :commands company-lsp)
 
-(use-package "lsp-ui"
+(use-package lsp-ui
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode)
   :bind (([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions)
-	 ([remap xref-find-references] . #'lsp-ui-peek-find-references)))
+         ([remap xref-find-references] . #'lsp-ui-peek-find-references)))
 
 (provide 'mad-lsp)
 ;;; mad-lsp.el ends here
