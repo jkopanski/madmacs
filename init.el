@@ -60,13 +60,14 @@
 ;; enable default modules
 (require 'mad-org)
 (require 'mad-git)
+(require 'mad-mail)
 (require 'mad-haskell)
 ;; (require 'mad-purescript)
 (require 'mad-javascript)
 (require 'mad-nix)
 ;; (require 'mad-ledger)
 ;; (require 'mad-racket)
-;; (require 'mad-rtl)
+(require 'mad-rtl)
 (require 'mad-agda)
 
 ;;; init.el ends here
