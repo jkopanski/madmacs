@@ -8,11 +8,11 @@
 (require 'mad-core)
 (require 'mad-lsp)
 
-(use-package "firrtl-mode"
+(use-package firrtl-mode
   :mode "\\.fir$"
   :mode "\\.firrtl$")
 
-(use-package "verilog-mode"
+(use-package verilog-mode
   :mode "\\.[ds]?vh?$"
   :hook (verilog-mode . mad-lsp))
 
