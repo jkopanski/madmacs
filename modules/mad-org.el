@@ -8,9 +8,14 @@
 
 (require 'mad-core)
 
-(use-package org
-  :ensure org-plus-contrib
+(use-package org-plus-contrib
+  :bind (("C-c l" . org-store-link)
+         ("C-c c" . org-capture)
+         ("C-c a" . org-agenda)
+         :map org-mode-map
+         ("C-c !" . org-time-stamp-inactive))
   :config
+  (require 'ol-notmuch)
   ;; Stop org-mode from highjacking shift-cursor keys.
   (setq org-replace-disputed-keys t)
   ;; Fancy bullets
