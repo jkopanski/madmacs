@@ -56,7 +56,7 @@
 (defmacro saved-search-entry (n q &optional k)
   `(quote (:name ,n
            :query ,(format "%s and not tag:deleted" q)
-           :count-query ,(format "%s" q)
+           :count-query ,(format "%s and tag:unread and not tag:deleted" q)
            :search-type tree
            :key ,(mapn 'kbd k))))
 
