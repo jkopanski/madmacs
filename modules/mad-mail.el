@@ -57,9 +57,18 @@
                  (add-to-list 'minor-mode-overriding-map-alist new-ro-bind))
     (goto-char (point-min))))
 
+;; https://github.com/syl20bnr/spacemacs/blob/develop/layers/%2Bemail/notmuch/funcs.el#L66
+(defun mad-git-apply-patch (entire-thread)
+  "Apply patch from a notmuch-show email buffer to a git repository
+
+If ENTIRE-THREAD is non-nil it will apply patches from all open
+messages in the current thread"
+  (interactive "P")
+  (notmuch-show-pipe-message entire-thread "git am -3"))
+
 (use-package notmuch
   :bind (:map notmuch-show-mode-map
-              ("C-c C-c" . notmuch-goto-message-in-gnus)
+              ("C-c C-c" . mad-git-apply-patch)
               ("d" . my-notmuch-show-view-as-patch))
   :config
   (setq
