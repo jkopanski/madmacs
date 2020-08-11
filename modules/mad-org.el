@@ -18,9 +18,6 @@
   (require 'ol-notmuch)
   ;; Stop org-mode from highjacking shift-cursor keys.
   (setq org-replace-disputed-keys t)
-  ;; Fancy bullets
-  (use-package org-bullets
-    :hook (org-mode . org-bullets-mode))
   ;; (use-package ob-typescript
   ;;   ;; :load-path "modules"
   ;;   :config
@@ -36,6 +33,25 @@
         org-src-tab-acts-natively t
         org-confirm-babel-evaluate nil
         org-edit-src-content-indentation 0))
+
+(defun my-auto-lightweight-mode ()
+  "Start Org Superstar differently depending on the number of lists items."
+  (let ((list-items
+         (count-matches "^[ \t]*?\\([+-]\\|[ \t]\\*\\)"
+                        (point-min) (point-max))))
+    (unless (< list-items 100)
+      (org-superstar-toggle-lightweight-lists)))
+  (org-superstar))
+
+;; Fancy bullets
+(use-package org-superstar
+  :hook ((org-mode . org-superstar-mode)
+         ;; (org-mode . my-auto-lightweight-mode)
+         )
+  :config
+  (setq org-superstar-special-todo-items t
+        org-hide-leading-stars nil
+        org-superstar-leading-bullet ?\s))
 
 (provide 'mad-org)
 ;;; mad-org.el ends here
