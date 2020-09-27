@@ -18,9 +18,17 @@
 
 (set-face-attribute 'default nil :font "mononoki" :height 130)
 
-(use-package nord-theme
+;; (use-package nord-theme
+;;   :config
+;;   (load-theme 'nord t))
+
+(use-package doom-themes
   :config
-  (load-theme 'nord t))
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (load-theme 'doom-nord-light t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-org-config))
 
 (setq use-package-verbose t)
 (use-package smart-mode-line
