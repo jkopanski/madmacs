@@ -29,82 +29,81 @@
   :config
   (which-key-mode 1))
 
-(defun mad--insert-mode-after-f (&optional fnc)
-  "Go to insert mode after executing FNC."
-  (when (fboundp fnc)
-    (funcall fnc))
-  (modalka-mode -1))
-
-(defun mad--newline ()
+(defun mad-newline ()
   "Insert newline below cursor."
   (end-of-line)
   (newline-and-indent))
 
-(defalias 'mad-insert-after   (ε #'mad--insert-mode-after-f #'forward-char))
-(defalias 'mad-insert-here    (ε #'mad--insert-mode-after-f))
-(defalias 'mad-insert-newline (ε #'mad--insert-mode-after-f #'mad--newline))
-
+;; Default cursor for input mode
 (setq-default cursor-type '(bar . 1))
-(use-package modalka
-  :delight
-  :bind ( ("<end>" . #'modalka-mode)
-          :map modalka-mode-map
-          ("a" . #'mad-insert-after)
-          ("o" . #'mad-insert-newline)
-          ("u" . #'mad-insert-here)
 
-          ;; ("h" . #'next-line)
-          ;; ("t" . #'previous-line)
-          ;; ("n" . #'forward-char)
-        )
-  :init
-  (modalka-global-mode 1)
+(use-package ryo-modal
+  :delight
+  :commands ryo-modal-mode
+  :bind ("C-u" . ryo-modal-mode)
+  :hook ((dired-mode . ryo-modal-mode)
+         (prog-mode . ryo-modal-mode)
+         (org-mode . ryo-modal-mode)
+         (text-mode . ryo-modal-mode))
   :config
-  (setq modalka-cursor-type 'box)
+  (setq ryo-modal-cursor-type 'box
+        ryo-modal-cursor-color nil)
   ;; right hand
   ;; home row + 1
-  (modalka-define-kbd "f" "C-a") ;; 'beginning-of-line
-  (modalka-define-kbd "g" "M-b") ;; 'backward-word
-  (modalka-define-kbd "c" "M-f") ;; 'forward-word
-  (modalka-define-kbd "r" "C-e") ;; 'end-of-line
-  (modalka-define-kbd "l" "") ;; NOT YET
-  (modalka-define-kbd "-" "") ;; NOT YET
+  (ryo-modal-keys
+   ("f" beginning-of-line)
+   ("g" backward-word)
+   ("c" forward-word)
+   ("r" end-of-line)
+   ;; ("l" todo)
+   ;; ("/" todo)
+   )
   ;; home row
-  (modalka-define-kbd "d" "C-b") ;; 'backward-char
-  (modalka-define-kbd "h" "C-n") ;; 'next-line
-  (modalka-define-kbd "t" "C-p") ;; 'previous-line
-  (modalka-define-kbd "n" "C-f") ;; 'forward-char
-  (modalka-define-kbd "s" "") ;; NOT YET
-  (modalka-define-kbd "/" "") ;; NOT YET
+  (ryo-modal-keys
+   ("d" backward-char)
+   ("h" next-line)
+   ("t" previous-line)
+   ("n" forward-char)
+   ;; ("s" todo)
+   ;; ("-" todo)
+   )
   ;; home row - 1
-  (modalka-define-kbd "b" "C-s") ;; 'isearch-forward
-  (modalka-define-kbd "m" "") ;; NOT YET
-  (modalka-define-kbd "w" "") ;; NOT YET
-  (modalka-define-kbd "v" "") ;; NOT YET
-  (modalka-define-kbd "z" "") ;; NOT YET
-  (modalka-define-kbd ")" "") ;; NOT YET
+  (ryo-modal-keys
+   ("b" isearch-forward)
+   ("m" other-window)
+   ;; ("w" "")
+   ;; ("v" "")
+   ;; ("z" "")
+   ;; ("\" "")
+   )
   ;; left hand
   ;; home row + 1
-  ;; (modalka-define-kbd "<tab>" "") ;; NOT YET
-  (modalka-define-kbd "'" "") ;; NOT YET
-  (modalka-define-kbd "," "") ;; NOT YET
-  (modalka-define-kbd "." "C-<backspace>") ;; 'backward-kill-word
-  (modalka-define-kbd "p" "M-d") ;; 'kill-word
-  (modalka-define-kbd "y" "") ;; NOT YET
+  (ryo-modal-keys
+   ;; ("`" todo)
+   ("'" indent-region)
+   ;; ("," todo)
+   ("." "C-<backspace>") ;; 'backward-kill-word
+   ("p" "M-d") ;; 'kill-word
+   )
   ;; home row
-  ;; (modalka-define-kbd "" "") ;; no key yet on my layout
-  ;; (modalka-define-kbd "a" "") ;; NOT YET
-  ;; (modalka-define-kbd "o" "") ;; NOT YET
-  (modalka-define-kbd "e" "C-/") ;; 'undo
-  ;; (modalka-define-kbd "u" "") ;; NOT YET
-  (modalka-define-kbd "i" "") ;; NOT YET
+  (ryo-modal-keys
+   ;; ("<prior>" todo)
+   ("a" "M-x")
+   ("o" mad-newline :exit t)
+   ("e" undo)
+   ("u" ryo-modal-mode)
+   ("i" forward-char :exit t)
+   ;; ("<tab>" todo)
+   )
   ;; home row - 1
-  (modalka-define-kbd "(" "") ;; NOT YET
-  (modalka-define-kbd ";" "") ;; NOT YET
-  (modalka-define-kbd "q" "C-w") ;; 'kill-region
-  (modalka-define-kbd "j" "M-w") ;; 'kill-ring-save
-  (modalka-define-kbd "k" "C-y") ;; 'yank
-  (modalka-define-kbd "x" "") ;; NOT YET
+  (ryo-modal-keys
+   ;; ("<next>" todo)
+   (";" comment-dwim)
+   ("q" kill-region)
+   ("j" kill-ring-save)
+   ("k" yank)
+   ;; ("X" "")
+   )
   )
 
 (provide 'mad-keys)
