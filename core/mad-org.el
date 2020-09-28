@@ -1,13 +1,9 @@
-;;; modules/mad-org.el --- Org -*- lexical-binding: t; -*-
+;;; core/mad-org.el --- Org -*- lexical-binding: t; -*-
 ;;; Commentary:
 
-;; Basic org for now.
-;; TODO:
-;; * add babel code snippets execution
-;; * add org-roam
+;; This in core in order to make sure I am using org from straight and not bundled with emacs.
 
-(require 'mad-core)
-
+;;; Code:
 (use-package org-plus-contrib
   :bind (("C-c l" . org-store-link)
          ("C-c c" . org-capture)

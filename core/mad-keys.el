@@ -2,12 +2,11 @@
 ;;; Commentary:
 
 ;; The idea is as follows:
-;; * use `modalka' to implement modal editing
-;;   by assigning standard Emacs keys
-;; * do mapping of keys to default ones
+;; * use `ryo-modal' to implement modal editing
 
 ;;; Code:
 
+(require 'mad-org)
 (require 'mad-package)
 (require 'mad-utils)
 
