@@ -12,6 +12,17 @@
 
 # Installed packages
 packages/
+straight/
+
+# Bookmarks
+bookmarks
+projectile-bookmarks.eld
 
 # Backup files
 backup/
+
+# Databases
+*.sqlite
+
+transient/
+.cache/
