@@ -9,11 +9,12 @@
 
 ;; I've deliberately disabled straight here because forge,
 ;; depends on binary from emacsql-sqlite.
-;; With straight enablet it won't find it in nix store.
+;; With straight enabled it won't find it in nix store.
 (use-package magit
   :straight nil
   :commands magit-status
-  :bind ("C-x g" . magit-status)
+  :ryo
+  ("SPC" (("g" magit-status :name "git status")))
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 

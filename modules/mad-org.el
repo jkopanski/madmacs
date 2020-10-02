@@ -2,27 +2,35 @@
 ;;; Commentary:
 
 ;; This in core in order to make sure I am using org from straight and not bundled with emacs.
+;; Keybindings for global actions are set in `mad-keys'
 
 ;;; Code:
+
+(require 'mad-core)
+
 (use-package org-plus-contrib
-  :bind (("C-c l" . org-store-link)
-         ("C-c c" . org-capture)
-         ("C-c a" . org-agenda)
-         :map org-mode-map
-         ("C-c !" . org-time-stamp-inactive))
+  :ryo
+  ("SPC o" (("l" org-store-link)
+            ("c" org-capture)
+            ("a" org-agenda)))
+  (:mode 'org-mode)
+  ("N" org-shiftright)
+  ("D" org-shiftleft)
+  ("T" org-shiftup)
+  ("H" org-shiftdown)
+  ("C-S-n" org-shiftcontrolright)
+  ("C-S-d" org-shiftcontrolleft)
+  ("C-S-t" org-shiftcontrolup)
+  ("C-S-h" org-shiftcontroldown)
+  ("M-n" org-demote-subtree)
+  ("M-d" org-promote-subtree)
+  ("M-t" org-move-subtree-up)
+  ("M-h" org-move-subtree-down)
+  ("SPC" (("!" org-time-stamp-inactive)))
   :config
   (require 'ol-notmuch)
   ;; Stop org-mode from highjacking shift-cursor keys.
   (setq org-replace-disputed-keys t)
-  ;; (use-package ob-typescript
-  ;;   ;; :load-path "modules"
-  ;;   :config
-  ;;   (org-babel-do-load-languages
-  ;;    'org-babel-load-languages
-  ;;    '((typescript . t)
-  ;;      (js . t))))
-  ;;   (add-to-list 'org-babel-tangle-lang-exts '("typescript" . "ts"))
-  ;;   (add-to-list 'org-babel-default-header-args:typescript '(:cmdline . "--types node"))
 
   ;; Code blocks
   (setq org-src-fontify-natively t
@@ -55,12 +63,12 @@
   :custom
   (org-roam-directory "~/roam")
   :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph-show))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
+         ("C-c n l" . org-roam)
+         ("C-c n f" . org-roam-find-file)
+         ("C-c n g" . org-roam-graph-show)
+         :map org-mode-map
+         ("C-c n i" . org-roam-insert)
+         ("C-c n I" . org-roam-insert-immediate)))
 
 (provide 'mad-org)
 ;;; mad-org.el ends here

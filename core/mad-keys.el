@@ -6,7 +6,6 @@
 
 ;;; Code:
 
-(require 'mad-org)
 (require 'mad-package)
 (require 'mad-utils)
 
@@ -30,6 +29,7 @@
 
 (defun mad-newline ()
   "Insert newline below cursor."
+  (interactive)
   (end-of-line)
   (newline-and-indent))
 
@@ -101,8 +101,11 @@
    ("q" kill-region)
    ("j" kill-ring-save)
    ("k" yank)
-   ;; ("X" "")
+   ;; ("x" "")
    )
+  (ryo-modal-key
+   "SPC" '(("s" save-buffer)
+           ("b" ibuffer-list-buffers)))
   )
 
 (provide 'mad-keys)
