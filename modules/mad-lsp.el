@@ -10,6 +10,7 @@
 (require 'mad-package)
 (require 'mad-direnv)
 (require 'mad-flycheck)
+(require 'mad-utils)
 
 (defun mad-lsp ()
   "Try setting up environment before starting LSP server."
@@ -17,8 +18,9 @@
   (lsp))
 
 (use-package lsp-mode
-  :commands lsp
   :delight
+  :ryo
+  ("SPC c" "M-l" :name "lsp commands")
   :init
   (setq
    ;; Automatically guess the project root using projectile/project.)
@@ -30,7 +32,10 @@
    ;; If you prefer flycheck and lsp-ui-flycheck is available, (setq lsp-prefer-flymake nil)
    lsp-prefer-flymake nil
    ;; I don't have yasnippet installed
-   lsp-enable-snippet nil)
+   lsp-enable-snippet nil
+   ;; HACK: cause of trouble with setting ryo to emit `s-l' I need to set matching prefix
+   lsp-keymap-prefix "M-l"
+   )
   :config
   (add-to-list 'lsp-file-watch-ignored "[/\\\]dist-newstyle$")
   (add-to-list 'lsp-file-watch-ignored "[/\\\]result.*"))
