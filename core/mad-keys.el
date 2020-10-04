@@ -25,6 +25,8 @@
   (setq which-key-separator " "
         which-key-prefix-prefix "+")
   :config
+  ;; remove ugly hashes from ryo which-key integration
+  (push '((nil . "ryo:.*:") . (nil . "")) which-key-replacement-alist)
   (which-key-mode 1))
 
 (defun mad-newline ()
