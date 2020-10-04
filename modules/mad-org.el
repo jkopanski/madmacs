@@ -7,6 +7,7 @@
 ;;; Code:
 
 (require 'mad-core)
+(require 'mad-utils)
 
 (use-package org-plus-contrib
   :ryo
@@ -61,14 +62,17 @@
   :ensure t
   :hook (after-init . org-roam-mode)
   :custom
-  (org-roam-directory "~/roam")
-  :bind (:map org-roam-mode-map
-         ("C-c n l" . org-roam)
-         ("C-c n f" . org-roam-find-file)
-         ("C-c n g" . org-roam-graph-show)
-         :map org-mode-map
-         ("C-c n i" . org-roam-insert)
-         ("C-c n I" . org-roam-insert-immediate)))
+  (org-roam-directory "~/org/roam")
+  :config
+  (defalias 'mad-roam
+    (ε #'org-roam))
+  :ryo
+  ("SPC o" (("r" mad-roam)
+            ("f" org-roam-find-file)
+            ("g" org-roam-graph-show)))
+  (:mode 'org-mode)
+  ("SPC o" (("i" org-roam-insert)
+            ("I" org-roam-insert-immediate))))
 
 (provide 'mad-org)
 ;;; mad-org.el ends here
