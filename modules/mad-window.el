@@ -13,8 +13,8 @@
     (ε #'aw-split-window-fair (selected-window)))
   (defalias 'mad-split-window-vert
     (ε #'aw-split-window-vert (selected-window)))
-  (defalias 'mad-split-window-horiz
-    (ε #'aw-split-window-horiz (selected-window)))
+  (defalias 'mad-split-window-horz
+    (ε #'aw-split-window-horz (selected-window)))
   (setq aw-keys '(?a ?o ?e ?u ?h ?t ?t ?s ?i ?d))
   :ryo
   (:norepeat t)
@@ -22,7 +22,7 @@
   ("SPC m"
    (("h" mad-split-window-fair :name "split fair")
     ("t" mad-split-window-vert :name "split vert")
-    ("n" mad-split-window-horiz :name "split horiz")
+    ("n" mad-split-window-horz :name "split horz")
     ("k" delete-window :name "delete window")
     ("x" delete-other-windows :name "delete other windows")
     )

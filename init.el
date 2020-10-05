@@ -58,6 +58,7 @@
 (require 'mad-core (concat user-emacs-directory "core/mad-core"))
 
 ;; enable default modules
+(require 'mad-window)
 (require 'mad-org)
 (require 'mad-git)
 (require 'mad-mail)
