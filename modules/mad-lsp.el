@@ -47,7 +47,12 @@
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode)
   :bind (([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions)
-         ([remap xref-find-references] . #'lsp-ui-peek-find-references)))
+         ([remap xref-find-references] . #'lsp-ui-peek-find-references))
+
+  :config
+  (setq lsp-ui-doc-position 'top
+        lsp-ui-doc-alignment 'frame)
+  )
 
 (provide 'mad-lsp)
 ;;; mad-lsp.el ends here
