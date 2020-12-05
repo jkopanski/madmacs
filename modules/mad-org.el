@@ -60,10 +60,25 @@
 
 (use-package org-roam
   :ensure t
+  :delight
   :hook (after-init . org-roam-mode)
-  :custom
-  (org-roam-directory "~/org/roam")
   :config
+  (setq
+   ;; Make roam recognize everithing under ~/org
+   org-roam-directory "~/org"
+   ;; But create new entries under ~/org/roam
+   org-roam-capture-templates '(("d" "default" plain #'org-roam-capture--get-point
+                                 "%?"
+                                 :file-name "roam/%<%Y%m%d%H%M%S>-${slug}"
+                                 :head "#+title: ${title}\n"
+                                 :unnarrowed t))
+   ;; Put dailies under ~/org/dailies
+   org-roam-dailies-capture-templates '(("d" "daily" plain (function org-roam-capture--get-point) ""
+                                         :immediate-finish t
+                                         :file-name "dailies/%<%Y-%m-%d>"
+                                         :head "#+TITLE: %<%Y-%m-%d>"))
+   ;; Treat directory hierarchy as tags
+   org-roam-tag-sources '(prop all-directories))
   (defalias 'mad-roam
     (ε #'org-roam))
   :ryo
