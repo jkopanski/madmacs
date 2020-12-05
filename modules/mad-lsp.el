@@ -37,8 +37,19 @@
    lsp-keymap-prefix "M-l"
    )
   :config
+  (defalias 'mad-lsp-command-map
+    (ε #'lsp-command-map))
   (add-to-list 'lsp-file-watch-ignored "[/\\\]dist-newstyle$")
-  (add-to-list 'lsp-file-watch-ignored "[/\\\]result.*"))
+  (add-to-list 'lsp-file-watch-ignored "[/\\\]result.*")
+
+  ;; verilog support
+  (setq lsp-log-io 't)
+  (add-to-list 'lsp-language-id-configuration '(verilog-mode . "verilog"))
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "verilog-language-server")
+                    :major-modes '(verilog-mode)
+                    :server-id 'verilog-language-server))
+  )
 
 (use-package company-lsp
   :commands company-lsp)
