@@ -7,12 +7,12 @@
 
 (require 'mad-package)
 
-(use-package "company"
+(use-package company
   :demand t
   :delight
   :commands company-mode
   :config
-  (setq company-idle-delay nil
+  (setq company-idle-delay 0.0
         company-minimum-prefix-length 2
         company-tooltip-limit 10
         company-tooltip-align-annotations t
@@ -25,7 +25,7 @@
 
   (global-company-mode +1)
 
-  (use-package "company-quickhelp"
+  (use-package company-quickhelp
     :config
     (setq company-quickhelp-delay 1)
     (company-quickhelp-mode 1)))
