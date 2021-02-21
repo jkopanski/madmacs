@@ -7,9 +7,10 @@
 
 ;;; Code:
 
-(require 'mad-package)
+(require 'mad-completion)
 (require 'mad-direnv)
 (require 'mad-flycheck)
+(require 'mad-package)
 (require 'mad-utils)
 
 (defun mad-lsp ()
@@ -42,17 +43,17 @@
   (add-to-list 'lsp-file-watch-ignored "[/\\\]dist-newstyle$")
   (add-to-list 'lsp-file-watch-ignored "[/\\\]result.*")
 
+  ;; missing glyph in my font
+  (setq lsp-headerline-arrow ">")
+
   ;; verilog support
-  (setq lsp-log-io 't)
+  ;; (setq lsp-log-io 't)
   (add-to-list 'lsp-language-id-configuration '(verilog-mode . "verilog"))
   (lsp-register-client
    (make-lsp-client :new-connection (lsp-stdio-connection "verilog-language-server")
                     :major-modes '(verilog-mode)
                     :server-id 'verilog-language-server))
   )
-
-(use-package company-lsp
-  :commands company-lsp)
 
 (use-package lsp-ui
   :after lsp-mode
@@ -62,7 +63,9 @@
 
   :config
   (setq lsp-ui-doc-position 'top
-        lsp-ui-doc-alignment 'frame)
+        lsp-ui-doc-alignment 'frame
+        lsp-ui-doc-show-with-cursor 't
+        lsp-ui-doc-show-with-mouse 't)
   )
 
 (provide 'mad-lsp)
