@@ -24,6 +24,7 @@
 ;; After that we reset it to the standard value.
 ;; Read [1] post for more info on this.
 ;; [1]: http://bling.github.io/blog/2016/01/18/why-are-you-changing-gc-cons-threshold/
+(setq my-gc-cons-threshold 10000000)
 (defvar file-name-handler-alist-backup
         file-name-handler-alist)
 (setq gc-cons-threshold most-positive-fixnum
@@ -31,12 +32,11 @@
 (add-hook 'after-init-hook
   (lambda ()
     (garbage-collect)
-    (setq gc-cons-threshold
-            (car (get 'gc-cons-threshold 'standard-value))
+    (setq gc-cons-threshold my-gc-cons-threshold)
       file-name-handler-alist
         (append
           file-name-handler-alist-backup
-          file-name-handler-alist))))
+          file-name-handler-alist)))
 
 ;; While the minibuffer is open, garbage collection will never occur, but once we make a selection, or cancel,
 ;; garbage collection will kick off immediately and then revert back to the default, sensible behavior.
@@ -45,11 +45,15 @@
 
 (defun my-minibuffer-exit-hook ()
   (setq gc-cons-threshold
-        (car (get 'gc-cons-threshold 'standard-value))))
+        (car (get 'gc-cons-threshold my-gc-cons-threshold))))
 
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
+;;ncrease the amount of data which Emacs reads from the process.
+;; Again the emacs default is too low 4k considering that the some
+;; of the language server responses are in 800k - 3M range.
+(setq read-process-output-max (* 4 1024 1024)) ;; 4mb
 
 ;; Set my paths
 (require 'mad-paths (concat (file-name-directory load-file-name)
@@ -66,9 +70,22 @@
 ;; (require 'mad-purescript)
 (require 'mad-javascript)
 (require 'mad-nix)
-;; (require 'mad-ledger)
+(require 'mad-ledger)
 ;; (require 'mad-racket)
 (require 'mad-rtl)
 (require 'mad-agda)
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   '((dante-repl-command-line "stack" "ghci" "--ghci-options" "-fdiagnostics-color=never"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
