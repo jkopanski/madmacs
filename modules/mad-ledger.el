@@ -7,37 +7,41 @@
 ;;; Code:
 
 (require 'mad-core)
+(require 'mad-completion)
 
-(use-package "hledger-mode"
+(use-package hledger-mode
   :mode "\\.journal$"
   :commands hledger-enable-reporting
-  :preface
-  (defun hledger/next-entry ()
-    "Move to next entry and pulse."
-    (interactive)
-    (hledger-next-or-new-entry)
-    (hledger-pulse-momentary-current-entry))
+  :config
+  (add-to-list 'company-backends 'hledger-company)
+  ;; :preface
+  ;; (defun hledger/next-entry ()
+  ;;   "Move to next entry and pulse."
+  ;;   (interactive)
+  ;;   (hledger-next-or-new-entry)
+  ;;   (hledger-pulse-momentary-current-entry))
 
-  (defface hledger-warning-face
-    '((((background dark))
-       :background "Red" :foreground "White")
-      (((background light))
-       :background "Red" :foreground "White")
-      (t :inverse-video t))
-    "Face for warning"
-    :group 'hledger)
+  ;; (defface hledger-warning-face
+  ;;   '((((background dark))
+  ;;      :background "Red" :foreground "White")
+  ;;     (((background light))
+  ;;      :background "Red" :foreground "White")
+  ;;     (t :inverse-video t))
+  ;;   "Face for warning"
+  ;;   :group 'hledger)
 
-  (defun hledger/prev-entry ()
-    "Move to last entry and pulse."
-    (interactive)
-    (hledger-backward-entry)
-    (hledger-pulse-momentary-current-entry))
+  ;; (defun hledger/prev-entry ()
+  ;;   "Move to last entry and pulse."
+  ;;   (interactive)
+  ;;   (hledger-backward-entry)
+  ;;   (hledger-pulse-momentary-current-entry))
 
-  :bind (("C-c j" . hledger-run-command)
-         :map hledger-mode-map
-         ("C-c e" . hledger-jentry)
-         ("M-p" . hledger/prev-entry)
-         ("M-n" . hledger/next-entry)))
-
+  ;; :ryo
+  ;; ("SPC f" (("j"  hledger-run-command))
+  ;;  (:mode 'hledger-mode)
+  ;;  ("u" . hledger-jentry)
+  ;;  ("c" . hledger/prev-entry)
+  ;;  ("g" . hledger/next-entry)))
+)
 (provide 'mad-ledger)
 ;;; mad-ledger.el ends here
