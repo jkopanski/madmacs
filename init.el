@@ -50,7 +50,7 @@
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
-;;ncrease the amount of data which Emacs reads from the process.
+;; increase the amount of data which Emacs reads from the process.
 ;; Again the emacs default is too low 4k considering that the some
 ;; of the language server responses are in 800k - 3M range.
 (setq read-process-output-max (* 4 1024 1024)) ;; 4mb
